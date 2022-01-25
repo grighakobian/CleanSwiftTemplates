@@ -15,7 +15,7 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
     // MARK: - Subject under test
 
     var sut: ___VARIABLE_sceneName___ViewController!
-    var interactor: ___VARIABLE_sceneName___BusinessLogicSpy!
+    var interactor: ___VARIABLE_sceneName___InteractorSpy!
     var router: ___VARIABLE_sceneName___RouterSpy!
     var window: UIWindow!
 
@@ -36,7 +36,7 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
 
     func setup___VARIABLE_sceneName___ViewController() {
         sut = ___VARIABLE_sceneName___ViewController()  // replace with proper instantiation
-        interactor = ___VARIABLE_sceneName___BusinessLogicSpy()
+        interactor = ___VARIABLE_sceneName___InteractorSpy()
         router = ___VARIABLE_sceneName___RouterSpy()
         sut.interactor = interactor
         sut.router = router
@@ -49,7 +49,7 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
 
     // MARK: - Test doubles
 
-    class ___VARIABLE_sceneName___BusinessLogicSpy: ___VARIABLE_sceneName___BusinessLogic {
+    class ___VARIABLE_sceneName___InteractorSpy: ___VARIABLE_sceneName___Interaction {
 
         var processCalled = false
 
@@ -58,11 +58,11 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
         }
     }
 
-    class ___VARIABLE_sceneName___RouterSpy: ___VARIABLE_sceneName___DataPassing, ___VARIABLE_sceneName___RoutingLogic {
+    class ___VARIABLE_sceneName___RouterSpy: ___VARIABLE_sceneName___DataPassing, ___VARIABLE_sceneName___Routing {
 
-        let dataStore: ___VARIABLE_sceneName___DataStore? = nil
+        let dataStore: ___VARIABLE_sceneName___DataStorable? = nil
 
-        func routeToSomewhere() {
+        func navigate(to destination: ___VARIABLE_sceneName___.RouteDestination, animated: Bool) {
             //...
         }
     }
@@ -82,7 +82,7 @@ class ___VARIABLE_sceneName___ViewControllerTests: XCTestCase {
 
     func testDisplaySomething() {
         // Given
-        let viewModel = ___VARIABLE_sceneName___.DataModel.ViewModel(item: "")
+        let viewModel = ___VARIABLE_sceneName___.ViewModel.presentData([""])
 
         // When
         loadView()

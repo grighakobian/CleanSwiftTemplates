@@ -15,8 +15,8 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
     // MARK: - Subject under test
 
     var sut: ___VARIABLE_sceneName___Interactor!
-    var presenter: ___VARIABLE_sceneName___PresentationLogicSpy!
-    var worker: ___VARIABLE_sceneName___WorkerProtocolMock!
+    var presenter: ___VARIABLE_sceneName___PresenterSpy!
+    var worker: ___VARIABLE_sceneName___WorkerMock!
 
     // MARK: - Test lifecycle
 
@@ -32,28 +32,23 @@ class ___VARIABLE_sceneName___InteractorTests: XCTestCase {
     // MARK: - Test setup
 
     func setup___VARIABLE_sceneName___Interactor() {
-        presenter = ___VARIABLE_sceneName___PresentationLogicSpy()
-        worker = ___VARIABLE_sceneName___WorkerProtocolMock()
-        sut = ___VARIABLE_sceneName___Interactor(presenter: presenter, worker: worker/*, name: ""*/)
+        presenter = ___VARIABLE_sceneName___PresenterSpy()
+        worker = ___VARIABLE_sceneName___WorkerMock()
+        sut = ___VARIABLE_sceneName___Interactor(presenter: presenter, worker: worker)
     }
 
     // MARK: - Test doubles
 
-    class ___VARIABLE_sceneName___PresentationLogicSpy: ___VARIABLE_sceneName___PresentationLogic {
+    class ___VARIABLE_sceneName___PresenterSpy: ___VARIABLE_sceneName___Presentation {
 
         var presentCalled = false
-        //var presentErrorCalled = false
 
-        func present(response: ___VARIABLE_sceneName___.DataModel.Response) {
+        func present(response: ___VARIABLE_sceneName___.Response) {
             presentCalled = true
         }
-
-        //func presentError(response: ___VARIABLE_sceneName___.ErrorModel.Response) {
-        //    presentErrorCalled = true
-        //}
     }
 
-    class ___VARIABLE_sceneName___WorkerProtocolMock: ___VARIABLE_sceneName___WorkerProtocol {
+    class ___VARIABLE_sceneName___WorkerMock: ___VARIABLE_sceneName___Worker {
 
         func doSomeWork() {
             //...

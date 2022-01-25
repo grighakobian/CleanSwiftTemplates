@@ -11,11 +11,11 @@ import Foundation
 
 struct ___VARIABLE_sceneName___Configurator {
     
-    static func create(/*name: String*/) -> ___VARIABLE_sceneName___ViewController {
+    static func create() -> ___VARIABLE_sceneName___ViewController {
         let viewController = ___VARIABLE_sceneName___ViewController()  // replace with proper instantiation
         let presenter = ___VARIABLE_sceneName___Presenter(viewController: viewController)
-        let worker = ___VARIABLE_sceneName___Worker()
-        let interactor = ___VARIABLE_sceneName___Interactor(presenter: presenter, worker: worker/*, name: name*/)
+        let worker = ___VARIABLE_sceneName___WorkerImpl()
+        let interactor = ___VARIABLE_sceneName___Interactor(presenter: presenter, worker: worker)
         let router = ___VARIABLE_sceneName___Router(viewController: viewController, dataStore: interactor)
         viewController.interactor = interactor
         viewController.router = router

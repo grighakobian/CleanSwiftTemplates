@@ -9,33 +9,34 @@
 
 import UIKit
 
-protocol ___VARIABLE_sceneName___RoutingLogic: AnyObject {
-    func routeToSomewhere()
+protocol ___VARIABLE_sceneName___Routing: AnyObject {
+    func navigate(to destination: ___VARIABLE_sceneName___.RouteDestination, animated: Bool)
 }
 
 protocol ___VARIABLE_sceneName___DataPassing: AnyObject {
-    var dataStore: ___VARIABLE_sceneName___DataStore? { get }
+    var dataStore: ___VARIABLE_sceneName___DataStorable? { get }
 }
 
 final class ___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___DataPassing {
 
     private weak var viewController: ___VARIABLE_sceneName___ViewController?
-    private(set) weak var dataStore: ___VARIABLE_sceneName___DataStore?
+    private(set) weak var dataStore: ___VARIABLE_sceneName___DataStorable?
     
-    init(viewController: ___VARIABLE_sceneName___ViewController?, dataStore: ___VARIABLE_sceneName___DataStore?) {
+    init(viewController: ___VARIABLE_sceneName___ViewController?, dataStore: ___VARIABLE_sceneName___DataStorable?) {
         self.viewController = viewController
         self.dataStore = dataStore
     }
 }
 
-// MARK: - RoutingLogic
+// MARK: - Routing
 
-extension ___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___RoutingLogic {
+extension ___VARIABLE_sceneName___Router: ___VARIABLE_sceneName___Routing {
 
-    func routeToSomewhere() {
+    func navigate(to destination: ___VARIABLE_sceneName___.RouteDestination, animated: Bool) {
+        
         //guard let dataStore = dataStore else { return }
         
-        let destinationViewController = ___VARIABLE_sceneName___Configurator.create(/*name: dataStore.name*/)
-        viewController?.navigationController?.pushViewController(destinationViewController, animated: true)
+        let destinationViewController = ___VARIABLE_sceneName___Configurator.create()
+        viewController?.navigationController?.pushViewController(destinationViewController, animated: animated)
     }
 }

@@ -9,33 +9,29 @@
 
 import UIKit
 
-protocol ___VARIABLE_sceneName___DisplayLogic: AnyObject {
-    func display(viewModel: ___VARIABLE_sceneName___.DataModel.ViewModel)
-    func displayError(viewModel: ___VARIABLE_sceneName___.ErrorModel.ViewModel)
+protocol ___VARIABLE_sceneName___Displaying: AnyObject {
+    func display(viewModel: ___VARIABLE_sceneName___.ViewModel)
 }
 
 final class ___VARIABLE_sceneName___ViewController: ___VARIABLE_viewControllerSubclass___ {
 
-    var interactor: ___VARIABLE_sceneName___BusinessLogic!
-    var router: (___VARIABLE_sceneName___RoutingLogic & ___VARIABLE_sceneName___DataPassing)!
+    var interactor: ___VARIABLE_sceneName___Interaction!
+    var router: (___VARIABLE_sceneName___Routing & ___VARIABLE_sceneName___DataPassing)!
 
     // MARK: - View lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         interactor.process(request: .viewDidLoad)
     }
 }
 
-// MARK: - DisplayLogic
+// MARK: - Displaying
 
-extension ___VARIABLE_sceneName___ViewController: ___VARIABLE_sceneName___DisplayLogic {
+extension ___VARIABLE_sceneName___ViewController: ___VARIABLE_sceneName___Displaying {
 
-    func display(viewModel: ___VARIABLE_sceneName___.DataModel.ViewModel) {
-        //...
-    }
-
-    func displayError(viewModel: ___VARIABLE_sceneName___.ErrorModel.ViewModel) {
+    func display(viewModel: ___VARIABLE_sceneName___.ViewModel) {
         //...
     }
 }

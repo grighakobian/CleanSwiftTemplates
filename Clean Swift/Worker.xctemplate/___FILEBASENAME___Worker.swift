@@ -9,11 +9,11 @@
 
 import Foundation
 
-protocol ___VARIABLE_sceneName___WorkerProtocol: AnyObject {
+protocol ___VARIABLE_sceneName___Worker: AnyObject {
     func doSomeWork()
 }
 
-final class ___VARIABLE_sceneName___Worker: ___VARIABLE_sceneName___WorkerProtocol {
+final class ___VARIABLE_sceneName___WorkerImpl: ___VARIABLE_sceneName___Worker {
 
     func doSomeWork() {
         //...
