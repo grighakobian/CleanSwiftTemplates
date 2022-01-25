@@ -11,30 +11,29 @@ import Foundation
 
 enum ___VARIABLE_sceneName___ {
 
-    // MARK: - Use cases
+    // MARK: - Interactor
 
     enum Request {
         case viewDidLoad
     }
-
-    enum DataModel {
-        struct Response {
-            let rawData: Any?
-            let error: Error?
-        }
-
-        struct ViewModel {
-            let item: Any
-        }
+    
+    // MARK: - Presenter
+    
+    enum Response {
+        case failure(Error)
+        case data([Any])
     }
-
-    enum ErrorModel {
-        //struct Response {
-        //    let rawError: Error
-        //}
-
-        struct ViewModel {
-            let error: Error
-        }
+    
+    // MARK: - View Controller
+    
+    enum ViewModel {
+        case presentError(Error)
+        case presentData([Any])
+    }
+    
+    // MARK: - Router
+    
+    enum RouteDestination {
+        
     }
 }

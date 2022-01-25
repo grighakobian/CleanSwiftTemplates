@@ -30,7 +30,7 @@ class ___VARIABLE_sceneName___WorkerTests: XCTestCase {
     // MARK: - Test setup
 
     func setup___VARIABLE_sceneName___Worker() {
-        sut = ___VARIABLE_sceneName___Worker()
+        sut = ___VARIABLE_sceneName___WorkerImpl()
     }
 
     // MARK: - Test doubles

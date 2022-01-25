@@ -15,7 +15,7 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
     // MARK: - Subject under test
 
     var sut: ___VARIABLE_sceneName___Presenter!
-    var viewController: ___VARIABLE_sceneName___DisplayLogicSpy!
+    var viewController: ___VARIABLE_sceneName___ViewControllerSpy!
 
     // MARK: - Test lifecycle
 
@@ -31,23 +31,24 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
     // MARK: - Test setup
 
     func setup___VARIABLE_sceneName___Presenter() {
-        viewController = ___VARIABLE_sceneName___DisplayLogicSpy()
+        viewController = ___VARIABLE_sceneName___ViewControllerSpy()
         sut = ___VARIABLE_sceneName___Presenter(viewController: viewController)
     }
 
     // MARK: - Test doubles
 
-    class ___VARIABLE_sceneName___DisplayLogicSpy: ___VARIABLE_sceneName___DisplayLogic {
+    class ___VARIABLE_sceneName___ViewControllerSpy: ___VARIABLE_sceneName___Displaying {
 
         var displayCalled = false
         var displayErrorCalled = false
 
-        func display(viewModel: ___VARIABLE_sceneName___.DataModel.ViewModel) {
-            displayCalled = true
-        }
-
-        func displayError(viewModel: ___VARIABLE_sceneName___.ErrorModel.ViewModel) {
-            displayErrorCalled = true
+        func display(viewModel: ___VARIABLE_sceneName___.ViewModel) {
+            switch viewModel {
+            case .presentData:
+                displayCalled = true
+            case .presentError:
+                displayErrorCalled = true
+            }
         }
     }
 
@@ -55,7 +56,7 @@ class ___VARIABLE_sceneName___PresenterTests: XCTestCase {
 
     func testPresentSomething() {
         // Given
-        let response = ___VARIABLE_sceneName___.DataModel.Response(rawData: "", error: nil)
+        let response = ___VARIABLE_sceneName___.Response.data([""])
 
         // When
         sut.present(response: response)
